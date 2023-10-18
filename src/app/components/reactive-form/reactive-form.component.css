@@ -1,0 +1,9 @@
+input:focus, input:active {
+    /* outline: none;
+    border: none; */
+    box-shadow: none;
+}
+input.ng-invalid.ng-touched {
+    outline: 1px solid white;
+    outline-offset: 2px;
+}
