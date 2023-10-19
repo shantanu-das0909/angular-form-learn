@@ -11,13 +11,27 @@
               formControlName="username"
               class="form-control"
             />
-            <span
+            <!-- <p
               class="help-block"
               *ngIf="
                 !signupForm.get('userData.username')?.valid &&
                 signupForm.get('userData.username')?.touched
               "
-              >Please enter a valid username !!</span
+              >Please enter a valid username !!</p
+            > -->
+            <p
+              *ngIf="
+                signupForm.get('userData.username')?.touched &&
+                getUsernameReuiredErrorStatus()
+              "
+              >This username is required !</p
+            >
+            <p
+              *ngIf="
+                signupForm.get('userData.username')?.touched &&
+                getUsernameForbiddenErrorStatus()
+              "
+              >This username is forbidden !</p
             >
           </div>
           <div class="form-group">
@@ -48,10 +62,23 @@
 
         <div class="my-5" formArrayName="hobbies">
           <h3 class="mb-3">Your Hobbies</h3>
-          <button class="btn btn-info my-2" type="button" (click)="onAddHobby()">Add Hobby</button>
+          <button
+            class="btn btn-info my-2"
+            type="button"
+            (click)="onAddHobby()"
+          >
+            Add Hobby
+          </button>
 
-          <div class="form-group" *ngFor="let hobby of hobbyControls; let i = index">
-            <input type="text" class="form-control my-2" [formControlName]="i">
+          <div
+            class="form-group"
+            *ngFor="let hobby of hobbyControls; let i = index"
+          >
+            <input
+              type="text"
+              class="form-control my-2"
+              [formControlName]="i"
+            />
           </div>
         </div>
 
